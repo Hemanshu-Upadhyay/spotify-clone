@@ -20,9 +20,7 @@ const PlayerBar = () => {
             <Player songs={songs} activeSong={activeSong} />
           ) : (
             <Box color={'white'}>
-              <Flex align="center" justify={'center'}>
-                Select Songs from Playlists To listen
-              </Flex>
+              <Text fontSize="large">Select Songs from Playlist to listen</Text>
             </Box>
           )}
         </Box>

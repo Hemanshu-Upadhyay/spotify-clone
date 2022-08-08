@@ -3,12 +3,17 @@ import jwt from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 import cookie from 'cookie'
 import prisma from '../../lib/prisma'
+import playlist from './playlist'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const salt = await bcrypt.genSalt(10)
   const { email, password, firstName, lastName } = req.body
 
   let user
+  const playlists = await prisma.playlist.findMany()
+  const songs = await prisma.song.findMany()
+  console.log(playlists)
+
   try {
     user = await prisma.user.create({
       data: {
@@ -16,6 +21,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         password: await bcrypt.hash(password, salt),
         firstName,
         lastName,
+        playlists: {
+          create: playlists.map((playlist) => ({
+            name: playlist.name,
+            songs: {
+              connect: songs.map((song) => ({
+                id: song.id,
+              })),
+            },
+          })),
+        },
       },
     })
   } catch (error) {

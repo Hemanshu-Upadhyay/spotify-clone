@@ -3,7 +3,7 @@ import SongTable from '../../components/songsTable'
 import { validateToken } from '../../lib/auth'
 import prisma from '../../lib/prisma'
 
-const getBGColor = (id: any) => {
+const getBGColor = (id) => {
   const colors = [
     'red',
     'green',

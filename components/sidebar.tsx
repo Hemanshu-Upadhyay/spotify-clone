@@ -1,5 +1,6 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
+
 import {
   Box,
   List,
@@ -18,6 +19,7 @@ import {
   MdFavorite,
 } from 'react-icons/md'
 import { usePlaylist } from '../lib/hooks'
+import { useState } from 'react'
 
 const navMenu = [
   {
@@ -50,10 +52,10 @@ const musicMenu = [
   },
 ]
 
-const playlists = new Array(10).fill(1).map((_, i) => `Playlist ${i + 1}`)
+// const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`)
 
 const Sidebar = () => {
-  // const { playlists } = usePlaylist()
+  const { playlists } = usePlaylist()
   return (
     <Box
       width="100%"
@@ -64,7 +66,7 @@ const Sidebar = () => {
     >
       <Box paddingY="20px" height="100%">
         <Box width="120px" marginBottom="20px" paddingX="20px">
-          <NextImage src="/logo.png" height={60} width={120} />
+          <NextImage src="/Spotify_Logo.png" height={60} width={120} />
         </Box>
         <Box marginBottom="20px">
           <List spacing={2}>
@@ -110,15 +112,16 @@ const Sidebar = () => {
         <Box height="66%" overflowY="auto" paddingY="20px">
           <List spaceing={2}>
             {playlists.map((playlist) => (
-              <ListItem paddingX="20px" key={playlist}>
+              <ListItem paddingX="20px" key={playlist.id}>
                 <LinkBox>
                   <NextLink
                     href={{
                       pathname: '/playlist/[id]',
+                      query: { id: playlist.id },
                     }}
                     passHref
                   >
-                    <LinkOverlay>{playlist}</LinkOverlay>
+                    <LinkOverlay>{`Playlist ${playlist.id}`} </LinkOverlay>
                   </NextLink>
                 </LinkBox>
               </ListItem>

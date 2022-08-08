@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         email: user.email,
         time: Date.now(),
       },
-      'hello',
+      'Superseceretkey',
       {
         expiresIn: '8h',
       }
