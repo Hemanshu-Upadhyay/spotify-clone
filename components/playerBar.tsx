@@ -1,10 +1,18 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import { useStoreState } from 'easy-peasy'
+import { useSelector } from 'react-redux'
 import Player from './player'
 
 const PlayerBar = () => {
-  const songs = useStoreState((state: any) => state.activeSongs)
-  const activeSong = useStoreState((state: any) => state.activeSong)
+  // // Easy-peasy state
+  // const songs = useStoreState((state: any) => state.activeSongs)
+  // console.log('The active Songs', songs)
+  // const activeSong = useStoreState((state: any) => state.activeSong)
+
+  // Redux-toolkit state
+  const activeSong = useSelector((state: any) => state.activeSong)
+  console.log('The active Song', activeSong)
+  const songs = useSelector((state: any) => state.activeSongs)
 
   return (
     <Box height="100px" width="100vw" bg="gray.900" padding="10px">

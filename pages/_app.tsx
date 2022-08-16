@@ -3,6 +3,15 @@ import { StoreProvider } from 'easy-peasy'
 import PlayerLayout from '../components/playerLayout'
 import 'reset-css'
 import { store } from '../lib/store'
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import songReducer from '../features/song'
+
+const Redux_Store = configureStore({
+  reducer: {
+    song: songReducer,
+  },
+})
 
 const theme = extendTheme({
   colors: {
@@ -35,15 +44,17 @@ const theme = extendTheme({
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <StoreProvider store={store}>
-        {Component.authPage ? (
-          <Component {...pageProps} />
-        ) : (
-          <PlayerLayout>
+      <Provider store={Redux_Store}>
+        <StoreProvider store={store}>
+          {Component.authPage ? (
             <Component {...pageProps} />
-          </PlayerLayout>
-        )}
-      </StoreProvider>
+          ) : (
+            <PlayerLayout>
+              <Component {...pageProps} />
+            </PlayerLayout>
+          )}
+        </StoreProvider>
+      </Provider>
     </ChakraProvider>
   )
 }
