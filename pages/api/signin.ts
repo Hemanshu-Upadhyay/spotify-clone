@@ -1,18 +1,18 @@
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import cookie from 'cookie'
-import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../lib/prisma'
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import cookie from "cookie";
+import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "../../lib/prisma";
 
-const secret = process.env.SECRET
+const secret = process.env.SECRET;
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
 
   const user = await prisma.user.findUnique({
     where: {
       email,
     },
-  })
+  });
 
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = jwt.sign(
@@ -23,24 +23,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
       secret,
       {
-        expiresIn: '8h',
+        expiresIn: "8h",
       }
-    )
+    );
 
     res.setHeader(
-      'Set-Cookie',
-      cookie.serialize('Cookie_access_token', token, {
+      "Set-Cookie",
+      cookie.serialize("Cookie_access_token", token, {
         httpOnly: true,
         maxAge: 8 * 60 * 60,
-        path: '/',
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        path: "/",
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
       })
-    )
+    );
 
-    res.json(user)
+    res.json(user);
   } else {
-    res.status(401)
-    res.json({ error: 'Email or Password is wrong' })
+    res.status(401);
+    res.json({ error: "Email or Password is wrong" });
   }
-}
+};

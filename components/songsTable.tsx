@@ -1,14 +1,14 @@
-import { Box } from '@chakra-ui/layout'
-import { Table, Thead, Td, Tr, Tbody, Th, IconButton } from '@chakra-ui/react'
-import { BsFillPlayFill } from 'react-icons/bs'
-import { AiOutlineClockCircle } from 'react-icons/ai'
-import { useStoreActions } from 'easy-peasy'
-import { formatDate, formatTime } from '../lib/formatters'
-import { changeActiveSongs, changeActiveSong } from '../features/song'
-import { useDispatch } from 'react-redux'
+import { Box } from "@chakra-ui/layout";
+import { Table, Thead, Td, Tr, Tbody, Th, IconButton } from "@chakra-ui/react";
+import { BsFillPlayFill } from "react-icons/bs";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { useStoreActions } from "easy-peasy";
+import { formatDate, formatTime } from "../lib/formatters";
+import { changeActiveSongs, changeActiveSong } from "../features/song";
+import { useDispatch } from "react-redux";
 
 const SongTable = ({ songs }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // // Easy-peasy actions
   // const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
@@ -17,9 +17,9 @@ const SongTable = ({ songs }) => {
   const handlePlay = (activeSong?) => {
     // setActiveSong(activeSong || songs[0])
     // playSongs(songs)
-    dispatch(changeActiveSong(activeSong || songs[0]))
-    dispatch(changeActiveSongs(songs))
-  }
+    dispatch(changeActiveSong(activeSong || songs[0]));
+    dispatch(changeActiveSongs(songs));
+  };
 
   return (
     <Box bg="transparent" color="white">
@@ -49,9 +49,9 @@ const SongTable = ({ songs }) => {
             {songs.map((song, i) => (
               <Tr
                 sx={{
-                  transition: 'all .3s ',
-                  '&:hover': {
-                    bg: 'rgba(255,255,255, 0.1)',
+                  transition: "all .3s ",
+                  "&:hover": {
+                    bg: "rgba(255,255,255, 0.1)",
                   },
                 }}
                 key={song.id}
@@ -68,7 +68,7 @@ const SongTable = ({ songs }) => {
         </Table>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SongTable
+export default SongTable;

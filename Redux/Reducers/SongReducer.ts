@@ -1,8 +1,8 @@
-import songActions from '../Actions/songActions'
+import songActions from "../Actions/songActions";
 const InitialState = {
   activeSongs: [],
   activesong: null,
-}
+};
 
 const SongReducer = (state = InitialState, action) => {
   switch (action.type) {
@@ -10,15 +10,15 @@ const SongReducer = (state = InitialState, action) => {
       return {
         ...state,
         activesong: action.payload,
-      }
+      };
     case songActions.CHANGE_ACTIVE_SONGS:
       return {
         ...state,
         activeSongs: action.payload,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default SongReducer
+export default SongReducer;

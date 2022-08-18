@@ -1,13 +1,13 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
 
-const signedinPages = ['/', '/playlist', '/library']
+const signedinPages = ["/", "/playlist", "/library"];
 
 export default function middleware(req) {
   if (signedinPages.find((p) => p === req.nextUrl.pathname)) {
-    const token = req.cookies.Cookie_access_token
+    const token = req.cookies.Cookie_access_token;
 
     if (!token) {
-      return NextResponse.redirect('/signin')
+      return NextResponse.redirect("/signin");
     }
   }
 }

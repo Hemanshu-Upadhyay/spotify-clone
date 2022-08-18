@@ -1,22 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { activeSongs: [], activesong: null }
+const initialState = { activeSongs: [], activesong: null };
 
 export const songSlice = createSlice({
-  name: 'songs',
+  name: "songs",
   initialState,
   reducers: {
     changeActiveSongs: (state: any, action) => {
-      console.log('Action', action.payload)
-      state.activeSongs = action.payload
+      console.log("Action", action.payload);
+      state.activeSongs = action.payload;
     },
     changeActiveSong: (state: any, action) => {
-      console.log('Action', action.payload)
-      state.activesong = action.payload
+      console.log("Action", action.payload);
+      state.activesong = action.payload;
     },
   },
-})
+});
 
-export const { changeActiveSongs, changeActiveSong } = songSlice.actions
+export const { changeActiveSongs, changeActiveSong } = songSlice.actions;
 
-export default songSlice.reducer
+export default songSlice.reducer;
