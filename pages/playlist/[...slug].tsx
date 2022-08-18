@@ -10,7 +10,7 @@ const Slug = () => {
       description={``}
       image={`https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png`}
     >
-      {/* <SongTable /> */}
+      {/**/}
     </GradientLayout>
   )
 }

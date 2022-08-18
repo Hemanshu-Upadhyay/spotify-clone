@@ -18,6 +18,5 @@ export const songSlice = createSlice({
 })
 
 export const { changeActiveSongs, changeActiveSong } = songSlice.actions
-// export const songactions = songSlice.actions
 
 export default songSlice.reducer

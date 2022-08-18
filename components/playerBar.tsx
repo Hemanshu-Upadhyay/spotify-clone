@@ -10,9 +10,8 @@ const PlayerBar = () => {
   // const activeSong = useStoreState((state: any) => state.activeSong)
 
   // Redux-toolkit state
-  const activeSong = useSelector((state: any) => state.activeSong)
-  console.log('The active Song', activeSong)
-  const songs = useSelector((state: any) => state.activeSongs)
+  const activeSong = useSelector((state: any) => state.song.activesong)
+  const songs = useSelector((state: any) => state.song.activeSongs)
 
   return (
     <Box height="100px" width="100vw" bg="gray.900" padding="10px">

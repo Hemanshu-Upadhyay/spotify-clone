@@ -4,6 +4,7 @@ import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../lib/prisma'
 
+const secret = process.env.SECRET
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, password } = req.body
 
@@ -20,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         email: user.email,
         time: Date.now(),
       },
-      'Superseceretkey',
+      secret,
       {
         expiresIn: '8h',
       }

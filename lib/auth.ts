@@ -2,6 +2,8 @@ import jwt from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from './prisma'
 
+const secret = process.env.SECRET
+
 export const validateRoute = (handler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.cookies.Cookie_access_token
@@ -10,7 +12,7 @@ export const validateRoute = (handler) => {
       let user
 
       try {
-        const { id } = jwt.verify(token, 'Superseceretkey')
+        const { id } = jwt.verify(token, secret)
         user = await prisma.user.findUnique({
           where: { id },
         })
@@ -33,6 +35,6 @@ export const validateRoute = (handler) => {
 }
 
 export const validateToken = (token) => {
-  const user = jwt.verify(token, 'Superseceretkey')
+  const user = jwt.verify(token, secret)
   return user
 }

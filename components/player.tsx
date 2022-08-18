@@ -22,6 +22,8 @@ import {
 } from 'react-icons/md'
 import { useStoreActions } from 'easy-peasy'
 import { formatTime } from '../lib/formatters'
+import { changeActiveSong } from '../features/song'
+import { useDispatch } from 'react-redux'
 
 const Player = ({ songs, activeSong }) => {
   const [playing, setPlaying] = useState(true)
@@ -35,7 +37,9 @@ const Player = ({ songs, activeSong }) => {
   const [duration, setDuration] = useState(0.0)
   const soundRef = useRef(null)
   const repeatRef = useRef(repeat)
-  const setActiveSong = useStoreActions((state: any) => state.changeActiveSong)
+  // const setActiveSong = useStoreActions((state: any) => state.changeActiveSong)
+  const dispatch = useDispatch()
+  // const setActiveSong = dispatch((state: any) => state.changeActiveSong)
 
   useEffect(() => {
     let timerId
@@ -54,8 +58,8 @@ const Player = ({ songs, activeSong }) => {
   }, [playing, isSeeking])
 
   useEffect(() => {
-    setActiveSong(songs[index])
-  }, [index, setActiveSong, songs])
+    dispatch(changeActiveSong(songs[index]))
+  }, [index, songs])
 
   useEffect(() => {
     repeatRef.current = repeat

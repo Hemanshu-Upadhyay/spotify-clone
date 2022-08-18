@@ -15,7 +15,11 @@ function Notfound() {
         <Box padding="50px" bg="gray.900" borderRadius="6px">
           <form>
             <p> OOPS ! </p>
-            <p> This page does not exist </p>
+            <p>
+              {' '}
+              This page does not exist Or is In Under Development Please Check
+              again Later{' '}
+            </p>
             <Button
               bg="green.500"
               sx={{
@@ -24,7 +28,7 @@ function Notfound() {
                 },
               }}
             >
-              <a href="/">"Go Back to HomePage"</a>
+              <a href="/">Go Back to HomePage</a>
             </Button>
           </form>
         </Box>

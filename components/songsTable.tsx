@@ -10,13 +10,13 @@ import { useDispatch } from 'react-redux'
 const SongTable = ({ songs }) => {
   const dispatch = useDispatch()
 
-  // Easy-peasy actions
-  const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
-  const setActiveSong = useStoreActions((store: any) => store.changeActiveSong)
+  // // Easy-peasy actions
+  // const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
+  // const setActiveSong = useStoreActions((store: any) => store.changeActiveSong)
 
   const handlePlay = (activeSong?) => {
-    setActiveSong(activeSong || songs[0])
-    playSongs(songs)
+    // setActiveSong(activeSong || songs[0])
+    // playSongs(songs)
     dispatch(changeActiveSong(activeSong || songs[0]))
     dispatch(changeActiveSongs(songs))
   }
