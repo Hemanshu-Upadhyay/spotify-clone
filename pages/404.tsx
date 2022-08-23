@@ -1,5 +1,5 @@
-import { Box, Flex, Input, Button } from "@chakra-ui/react";
-import NextImage from "next/image";
+import { Box, Flex, Input, Button } from '@chakra-ui/react'
+import NextImage from 'next/image'
 function Notfound() {
   return (
     <Box height="100vh" width="100vw" bg="black" color="white">
@@ -16,15 +16,15 @@ function Notfound() {
           <form>
             <p> OOPS ! </p>
             <p>
-              {" "}
+              {' '}
               This page does not exist Or is In Under Development Please Check
-              again Later{" "}
+              again Later{' '}
             </p>
             <Button
               bg="green.500"
               sx={{
-                "&:hover": {
-                  bg: "green.300",
+                '&:hover': {
+                  bg: 'green.300',
                 },
               }}
             >
@@ -34,9 +34,9 @@ function Notfound() {
         </Box>
       </Flex>
     </Box>
-  );
+  )
 }
 
-Notfound.authPage = true;
+Notfound.authPage = true
 
-export default Notfound;
+export default Notfound

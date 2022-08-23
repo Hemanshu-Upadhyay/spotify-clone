@@ -1,17 +1,17 @@
-import { Box, Text, Flex } from "@chakra-ui/layout";
-import { Image } from "@chakra-ui/react";
-import GradientLayout from "../components/gradientLayout";
-import { useMe } from "../lib/hooks";
-import prisma from "../lib/prisma";
+import { Box, Text, Flex } from '@chakra-ui/layout'
+import { Image } from '@chakra-ui/react'
+import GradientLayout from '../components/gradientLayout'
+import { useMe } from '../lib/hooks'
+import prisma from '../lib/prisma'
 
 const Home = ({ artists }) => {
-  const { user } = useMe();
+  const { user } = useMe()
 
   return (
     <GradientLayout
       roundImage
       color="gray"
-      subtitle="profile"
+      subtitle=" Your profile"
       title={`${user?.firstName} ${user?.lastName}`}
       description={`${user?.playlistsCount} public playlists`}
       image="https://i0.wp.com/blog.frontiersin.org/wp-content/uploads/2017/05/frontiers-in-psychology-group-music-depression.jpg?resize=940%2C627&ssl=1"
@@ -23,9 +23,29 @@ const Home = ({ artists }) => {
           </Text>
           <Text fontSize="md">only visible to you</Text>
         </Box>
-        <Flex>
+        <Flex
+          // make it responsive
+          flexWrap="wrap"
+          justifyContent="space-between"
+          alignItems="center"
+          marginBottom="40px"
+        >
           {artists.map((artist) => (
-            <Box paddingX="10px" width="20%">
+            <Box
+              // make it responsive
+              width="200px"
+              height="full"
+              display="flex"
+              marginBottom={20}
+              alignItems="center"
+              justifyContent="center"
+              overflow="hidden"
+              borderRadius="lg"
+              // backgroundColor="gray.100"
+            >
+              {/* paddingX="10px"
+              width="20%"
+            > */}
               <Box bg="gray.900" borderRadius="4px" padding="15px" width="100%">
                 <Image
                   src="https://placekitten.com/300/300"
@@ -41,15 +61,15 @@ const Home = ({ artists }) => {
         </Flex>
       </Box>
     </GradientLayout>
-  );
-};
+  )
+}
 
 export const getServerSideProps = async () => {
-  const artists = await prisma.artist.findMany({});
+  const artists = await prisma.artist.findMany({})
 
   return {
     props: { artists },
-  };
-};
+  }
+}
 
-export default Home;
+export default Home

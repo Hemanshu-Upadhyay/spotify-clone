@@ -1,9 +1,9 @@
-import GradientLayout from "../../components/gradientLayout";
+import GradientLayout from '../../components/gradientLayout'
 
 const Slug = () => {
   return (
     <GradientLayout
-      color={"red"}
+      color={'red'}
       roundImage={false}
       title={"Playlist you're looking for doesn't exist"}
       subtitle="playlist Does"
@@ -12,6 +12,6 @@ const Slug = () => {
     >
       {/**/}
     </GradientLayout>
-  );
-};
-export default Slug;
+  )
+}
+export default Slug
