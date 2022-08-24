@@ -38,6 +38,7 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
           <Box padding="50px" bg="gray.900" borderRadius="6px">
             <form onSubmit={handleSubmit}>
               <Input
+                marginBottom={3.5}
                 placeholder="email"
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -48,6 +49,11 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Button
+                display={['block', 'block']}
+                mt={4}
+                position="relative"
+                right={['-55px', '0px', '0px', '0px']}
+                width={'150px'}
                 type="submit"
                 bg="green.500"
                 isLoading={isLoading}

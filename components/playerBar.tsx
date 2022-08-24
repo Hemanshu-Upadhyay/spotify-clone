@@ -17,7 +17,12 @@ const PlayerBar = () => {
     <Box height="100px" width="100vw" bg="gray.900" padding="10px">
       <Flex align="center">
         {activeSong ? (
-          <Box padding="20px" color="white" width="30%">
+          <Box
+            padding="20px"
+            color="white"
+            width="30%"
+            display={['none', 'block', 'block']}
+          >
             <Text fontSize="large">{activeSong.name}</Text>
             <Text fontSize="sm">{activeSong.artist.name}</Text>
           </Box>
@@ -27,7 +32,7 @@ const PlayerBar = () => {
             <Player songs={songs} activeSong={activeSong} />
           ) : (
             <Box color={'white'}>
-              <Text fontSize="large">Select Songs from Playlist to listen</Text>
+              <Text>Select Songs from Playlist to listen</Text>
             </Box>
           )}
         </Box>

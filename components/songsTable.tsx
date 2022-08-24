@@ -1,5 +1,14 @@
 import { Box } from '@chakra-ui/layout'
-import { Table, Thead, Td, Tr, Tbody, Th, IconButton } from '@chakra-ui/react'
+import {
+  Table,
+  Thead,
+  Td,
+  Tr,
+  Tbody,
+  Th,
+  IconButton,
+  Button,
+} from '@chakra-ui/react'
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { useStoreActions } from 'easy-peasy'
@@ -9,6 +18,9 @@ import { useDispatch } from 'react-redux'
 
 const SongTable = ({ songs }) => {
   const dispatch = useDispatch()
+  const Redirect = () => {
+    window.location.href = '/'
+  }
 
   // // Easy-peasy actions
   // const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
@@ -37,7 +49,7 @@ const SongTable = ({ songs }) => {
         <Table variant="unstyled">
           <Thead borderBottom="1px solid" borderColor="rgba(255,255,255,0.2)">
             <Tr>
-              <Th>#</Th>
+              <Th display={['none', 'block', 'block']}>#</Th>
               <Th>Title</Th>
               <Th>Date Added</Th>
               <Th>
@@ -58,7 +70,7 @@ const SongTable = ({ songs }) => {
                 cursor="pointer"
                 onClick={() => handlePlay(song)}
               >
-                <Td>{i + 1}</Td>
+                <Td display={['none', 'block', 'block']}> {i + 1}</Td>
                 <Td>{song.name}</Td>
                 <Td>{formatDate(song.createdAt)}</Td>
                 <Td>{formatTime(song.duration)}</Td>
@@ -66,6 +78,21 @@ const SongTable = ({ songs }) => {
             ))}
           </Tbody>
         </Table>
+      </Box>
+      {/* Make a Centered Button */}
+      <Box display={['block', 'none', 'none']}>
+        <Button
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          bg={'green.500'}
+          variant="solid"
+          size="lg"
+          margin="20px"
+          onClick={() => Redirect()}
+        >
+          Return to Home
+        </Button>
       </Box>
     </Box>
   )

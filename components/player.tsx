@@ -120,7 +120,7 @@ const Player = ({ songs, activeSong }) => {
   return (
     // Make this component responsive
 
-    <Box>
+    <Box width={['95vw', 'auto', 'auto']} bg="gray.900" padding="10px">
       <Box>
         <ReactHowler
           playing={playing}
